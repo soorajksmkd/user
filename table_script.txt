@@ -1,0 +1,65 @@
+CREATE DATABASE `userdb` ;
+USE `userdb`;
+
+CREATE TABLE `buyer` (
+  `BUYERID` int(11) NOT NULL,
+  `NAME` varchar(45) NOT NULL,
+  `EMAIL` varchar(45) NOT NULL,
+  `PHONENUMBER` varchar(45) NOT NULL,
+  `PASSWORD` varchar(45) NOT NULL,
+  `ISPRIVILEGED` tinyint(1) DEFAULT NULL,
+  `REWARDPOINTS` int(11) DEFAULT NULL,
+  `ISACTIVE` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`BUYERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+alter table `buyer` change `BUYERID` `BUYERID` int(11) auto_increment;
+
+CREATE TABLE `cart` (
+  `BUYERID` int(11) NOT NULL,
+  `PRODID` int(11) NOT NULL,
+  `QUANTITY` int(11) NOT NULL,
+  PRIMARY KEY (`BUYERID`,`PRODID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `seller` (
+  `SELLERID` int(11) NOT NULL,
+  `NAME` varchar(45) NOT NULL,
+  `EMAIL` varchar(45) NOT NULL,
+  `PHONENUMBER` varchar(45) NOT NULL,
+  `PASSWORD` varchar(45) NOT NULL,
+  `ISACTIVE` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`SELLERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+alter table `seller` change `SELLERID` `SELLERID` int(11) auto_increment;
+
+CREATE TABLE `wishlist` (
+  `BUYERID` int(11) NOT NULL,
+  `PRODID` int(11) NOT NULL,
+  PRIMARY KEY (`BUYERID`,`PRODID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+insert into buyer values('1','Ram','ram@gmail.com','9876543210','ram@2021',1,Null,Null);
+insert into buyer values('2','Ajay','ajay@gmail.com','8765432109','ajay@2021',Null,Null,Null);
+insert into buyer values('3','Krishna','krishna@gmail.com','7654321098','krisna@2021',Null,Null,Null);
+insert into buyer values('4','Sneha','sneha@gmail.com','9638527410','sneha@2021',1,Null,Null);
+insert into buyer values('5','Anna','anna@gmail.com','8520963741','anna@2021',Null,11000,Null);
+
+insert into cart values('1','1','500');
+insert into cart values('2','7','123');
+insert into cart values('3','4','567');
+insert into cart values('8','2','987');
+insert into cart values('6','5','1');
+
+insert into seller values('1','Ravi','ravi@gmail.com','9876543210','ravi@2021',Null);
+insert into seller values('2','Adam','ajay@gmail.com','8765432109','adam@2021',Null);
+insert into seller values('3','Varun','varun@gmail.com','7654321098','varun@2021',Null);
+insert into seller values('4','Anagha','anagha@gmail.com','9638527410','anagha@2021',Null);
+insert into seller values('5','Nikhil','nikhil@gmail.com','8520963741','nikhil@2021',Null);
+
+insert into wishlist values('1','2');
+insert into wishlist values('2','1');
+insert into wishlist values('3','8');
+insert into wishlist values('4','6');
+insert into wishlist values('5','5');
